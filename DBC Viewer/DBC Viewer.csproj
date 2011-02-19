@@ -77,7 +77,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -192,6 +191,10 @@
     <ProjectReference Include="..\PluginInterface\PluginInterface.csproj">
       <Project>{1A2AD897-3AB7-4C6E-9071-B63D54D36E84}</Project>
       <Name>PluginInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StructBuilder\StructBuilder.csproj">
+      <Project>{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}</Project>
+      <Name>StructBuilder</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

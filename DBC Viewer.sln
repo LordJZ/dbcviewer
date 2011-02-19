@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginInterface", "PluginIn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export2SQL", "Export2SQL\Export2SQL.csproj", "{34EFF3F2-00F6-4BAA-9694-33175B8F92D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructBuilder", "StructBuilder\StructBuilder.csproj", "{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{34EFF3F2-00F6-4BAA-9694-33175B8F92D1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{34EFF3F2-00F6-4BAA-9694-33175B8F92D1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{34EFF3F2-00F6-4BAA-9694-33175B8F92D1}.Release|x86.ActiveCfg = Release|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F52E2541-E2FC-4A25-8602-EE1AB8F613F9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
