@@ -8,11 +8,22 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using dbc2sql;
-
 namespace DBCViewer
 {
     partial class MainForm
     {
+        class RowColumnIndices
+        {
+            public RowColumnIndices(int row, int column)
+            {
+                this.Row = row;
+                this.Column = column;
+            }
+
+            public readonly int Row;
+            public readonly int Column;
+        }
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
@@ -386,29 +397,6 @@ namespace DBCViewer
             ((ToolStripMenuItem)columnsFilterToolStripMenuItem.DropDownItems[index]).Checked = true;
         }
 
-        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                return;
-
-            DataGridView.HitTestInfo hit = dataGridView1.HitTest(e.X, e.Y);
-
-            if (hit.Type == DataGridViewHitTestType.ColumnHeader)
-            {
-                columnContextMenuStrip.Tag = hit.ColumnIndex;
-
-                foreach (ToolStripMenuItem item in autoSizeModeToolStripMenuItem.DropDownItems)
-                {
-                    if (item.Tag.ToString() == dataGridView1.Columns[hit.ColumnIndex].AutoSizeMode.ToString())
-                        item.Checked = true;
-                    else
-                        item.Checked = false;
-                }
-
-                columnContextMenuStrip.Show((Control)sender, e.Location.X, e.Location.Y);
-            }
-        }
-
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseFile();
@@ -471,15 +459,34 @@ namespace DBCViewer
 
         private void dataGridView1_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
-            cellContextMenuStrip.Tag = String.Format("{0} {1}", e.ColumnIndex, e.RowIndex);
-            e.ContextMenuStrip = cellContextMenuStrip;
+            // Header case
+            if (e.RowIndex == -1)
+            {
+                columnContextMenuStrip.Tag = e.ColumnIndex;
+
+                foreach (ToolStripMenuItem item in autoSizeModeToolStripMenuItem.DropDownItems)
+                {
+                    if (item.Tag.ToString() == dataGridView1.Columns[e.ColumnIndex].AutoSizeMode.ToString())
+                        item.Checked = true;
+                    else
+                        item.Checked = false;
+                }
+
+                e.ContextMenuStrip = columnContextMenuStrip;
+            }
+            else
+            {
+                cellContextMenuStrip.Tag = new RowColumnIndices(e.RowIndex, e.ColumnIndex);
+                e.ContextMenuStrip = cellContextMenuStrip;
+            }
         }
 
         private void filterThisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var meta = ((string)cellContextMenuStrip.Tag).Split(' ');
-            var column = Convert.ToInt32(meta[0]);
-            var row = Convert.ToInt32(meta[1]);
+            var meta = (RowColumnIndices)cellContextMenuStrip.Tag;
+            var column = meta.Column;
+            var row = meta.Row;
+
             ShowFilterForm();
             m_filterForm.SetSelection(dataGridView1.Columns[column].Name, dataGridView1[column, row].Value.ToString());
         }
