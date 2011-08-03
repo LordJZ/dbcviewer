@@ -21,7 +21,7 @@ namespace DBCViewer
             // Handle format string.
             int baseNumber;
             // Handle null or empty format string, string with precision specifier.
-            string thisFmt = String.Empty;
+            string thisFmt = string.Empty;
             // Extract first character of format string (precision specifiers
             // are not supported).
             if (!String.IsNullOrEmpty(format))
@@ -31,8 +31,7 @@ namespace DBCViewer
             byte[] bytes;
             if (arg is sbyte)
             {
-                string byteString = ((sbyte)arg).ToString("X2", CultureInfo.InvariantCulture);
-                bytes = new byte[1] { Byte.Parse(byteString, NumberStyles.HexNumber, CultureInfo.InvariantCulture) };
+                bytes = new byte[1] { (byte)(sbyte)arg };
             }
             else if (arg is byte)
             {

@@ -1,2 +1,9 @@
+# Project output
 */bin/*
+
+# Visual Studio files
 */obj/*
+*.suo
+
+# Misc files
+*.patch
